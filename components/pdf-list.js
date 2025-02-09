@@ -42,13 +42,25 @@ export default function PdfList() {
     setPdfs(copy);
   }
 
-  async function updatePdf(pdf, fieldChanged) {
+/* The updatePDF function changed as below*/
+ /* async function updatePdf(pdf, fieldChanged) {
     const data = { [fieldChanged]: pdf[fieldChanged] };
 
     await fetch(process.env.NEXT_PUBLIC_API_URL + `/pdfs/${pdf.id}`, {
       method: 'PUT',
       body: JSON.stringify(data),
       headers: { 'Content-Type': 'application/json' }
+    });
+  }*/
+
+  async function updatePdf(pdf, fieldChanged) {
+    const body_data = JSON.stringify(pdf);
+    const url = process.env.NEXT_PUBLIC_API_URL + `/pdfs/${pdf.id}`;
+
+    await fetch(url, {
+        method: 'PUT',
+        body: body_data,
+        headers: { 'Content-Type': 'application/json' }
     });
   }
 

@@ -26,7 +26,7 @@ export default function PDFComponent(props) {
         rel="noopener noreferrer"
         className={styles.viewPdfLink}
       >
-        <Image src="/document-view.svg" width="22" height="22" />
+        <Image src="/task-view.svg" width="22" height="22" />
       </a>
       <button
         className={styles.deleteBtn}
