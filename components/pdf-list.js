@@ -89,10 +89,16 @@ export default function PdfList() {
 
     const formData = new FormData();
     formData.append("file", selectedFile);
-
+/*
     const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/pdfs/upload", {
       method: "POST",
       body: formData,
+    });*/
+
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/pdfs/upload`, {
+    method: "POST",
+    body: formData,  // Ensure formData is correctly populated
+    // Do NOT set 'Content-Type': 'multipart/form-data' here; fetch does it automatically
     });
 
     if (response.ok) {
