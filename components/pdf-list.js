@@ -23,6 +23,7 @@ export default function PdfList() {
     }
     const res = await fetch(process.env.NEXT_PUBLIC_API_URL + path);
     const json = await res.json();
+    console.log(json); // Log to see the structure of the received data
     setPdfs(json);
   }
 
@@ -89,17 +90,20 @@ export default function PdfList() {
 
     const formData = new FormData();
     formData.append("file", selectedFile);
-/*
+
+    for (let [key, value] of formData.entries()) {
+    console.log(key, value);
+}
+
     const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/pdfs/upload", {
       method: "POST",
       body: formData,
-    });*/
-
+    });
+/*
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/pdfs/upload`, {
     method: "POST",
-    body: formData,  // Ensure formData is correctly populated
-    // Do NOT set 'Content-Type': 'multipart/form-data' here; fetch does it automatically
-    });
+    body: formData, 
+    });*/
 
     if (response.ok) {
       const newPdf = await response.json();
